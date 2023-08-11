@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import * as polygonScanApi from 'polygonscan-api';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'SIMON HALLO!';
+  async getAddressInfo(address: string): Promise<string> {
+    const balance = await polygonScanApi.account.balance(address);
+    return balance;
   }
 }
