@@ -33,18 +33,15 @@ export class AppService2 {
     const rpcURL = 'https://rpc.eu-north-1.gateway.fm/v4/polygon/non-archival/mumbai';
     const web3 = new Web3(rpcURL);
 
-    const test = ''
-
-    const contractABI = require('../../felang/output/AffinityScorer/AffinityScorer_abi.json');
-    console.log('Contract ABI:', contractABI);
-    const contractAddress = '0xF991769c45b371f8404E106ddb2dC047d43f21c8'; // Smart contract address
-    const contract = new web3.eth.Contract(contractABI, contractAddress);
-    console.log(contract.methods);
-
     async function callSmartContract() {
       try {
+        const contractABI = require('../../felang/output/AffinityScorer/AffinityScorer_abi.json');
+        const contractAddress = '0x48Ba62fbce0127d831e1a9518cdB531350f7B4f7'; 
+        const contract = new web3.eth.Contract(contractABI, contractAddress);
+
         const addr = '0x718Ac9e6311546Cd7aa0FaF5f350B1cDAe5a53e2';
         const result = await contract.methods.get_msg().call();
+        
         console.log('Call result:', result);
       } catch (error) {
         console.error('Error:', error);
