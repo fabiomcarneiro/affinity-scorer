@@ -27,6 +27,7 @@ export class AppService {
 
     const result = {
       'NR_TRANSACTIONS' : transactionsNullAddress.length,
+      'SmartContractAffinityScore': 80
     }
     return JSON.stringify(result);
   }
